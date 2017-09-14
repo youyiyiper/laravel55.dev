@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //后台菜单视图共享数据
+        App\Providers\SidebarServiceProvider::class,
+
+        //图片处理 http://laravelacademy.org/post/3585.html
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -226,6 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //图片处理 http://laravelacademy.org/post/3585.html
+        //'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
