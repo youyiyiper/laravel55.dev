@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ManagerChangePwdRequest;
 use Illuminate\Http\Request;
 use App\Repositories\AdminsRepository;
 use Illuminate\Support\Facades\Response;
@@ -34,19 +35,8 @@ class ManagerController extends Controller
     /**
      * 修改密码 显示修改密码页面
      */
-    public function postChangePwd(Request $request)
-    {   
-        $this->validate(request(), [
-            'name' => 'required|between:2,20',
-            'password' => 'required|confirmed|between:6,20',
-        ],[
-            'name.required' => '密码不能为空',
-            'name.between'       => '用户名必须是2~20位之间',
-            'password.required' => '密码不能为空',
-            'password.between'  => '密码必须是6~20位之间',
-            'password.confirmed' => '新密码和确认密码不匹配'
-        ]);
-
+    public function postChangePwd(ManagerChangePwdRequest $request)
+    {
         $admin_id = session('adminDetail.id');
         $result = $this->AdminsRpt->update($admin_id,array('password' => bcrypt($request->password)));
         if ($result) {

@@ -44,13 +44,13 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2" for="password">密码 * :</label>
                                 <div class="col-md-4 col-sm-4">
-                                    <input class="form-control" id="password" type="text" name="password" placeholder="密码" value="{{ old('password') }}" data-parsley-length="[6,20]" data-parsley-length-message="密码长度6~20字符" data-parsley-required="true" data-parsley-required-message="请输入密码" />
+                                    <input class="form-control" id="password" type="text" name="password" placeholder="密码" value="{{ old('password') }}" data-parsley-length="[6,30]" data-parsley-length-message="密码长度6~30字符" data-parsley-required="true" data-parsley-required-message="请输入密码" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2" for="password">确认密码 * :</label>
                                 <div class="col-md-4 col-sm-4">
-                                    <input class="form-control" type="text" name="password_confirmation" placeholder="确认密码" value="{{ old('password_confirmation') }}" data-parsley-length="[6,20]" data-parsley-length-message="密码长度6~20字符" data-parsley-required="true" data-parsley-required-message="请确认密码" data-parsley-equalto="#password" data-parsley-equalto-message="两次密码输入不一致"/>
+                                    <input class="form-control" type="text" name="password_confirmation" placeholder="确认密码" value="{{ old('password_confirmation') }}" data-parsley-length="[6,30]" data-parsley-length-message="密码长度6~30字符" data-parsley-required="true" data-parsley-required-message="请确认密码" data-parsley-equalto="#password" data-parsley-equalto-message="两次密码输入不一致"/>
                                 </div>
                             </div>
                             <div class="form-group">

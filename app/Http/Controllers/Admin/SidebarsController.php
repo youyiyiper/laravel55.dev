@@ -80,7 +80,7 @@ class SidebarsController extends Controller
             \Session::flash('warning','添加失败!');
         }
 
-        return  redirect('admin/sidebar/create');
+        return  redirect()->back();
     }
 
     /**
@@ -151,7 +151,7 @@ class SidebarsController extends Controller
             \Session::flash('warning','修改失败!');
         }
 
-        return  redirect('admin/sidebar/'.$id.'/edit');
+        return  redirect()->back();
     }
 
     /**
@@ -169,7 +169,7 @@ class SidebarsController extends Controller
         }else{
             \Session::flash('flash_notification_message','删除数据失败!');
         }
-        
-        return  redirect('admin/sidebar');
+
+        return  redirect()->back();
     }
 }

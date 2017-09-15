@@ -55,7 +55,7 @@ class CategorysController extends Controller
     {
         if ($this->CategorysRpt->createCategory($request->all())) {
             \Session::flash('success','添加成功!');
-        }else{
+        } else {
             \Session::flash('warning','添加失败!');
         }
 
@@ -98,7 +98,7 @@ class CategorysController extends Controller
     {
         if ($this->CategorysRpt->updateCategory($id,$request->all())) {
             \Session::flash('success','修改成功!');
-        }else{
+        } else {
             \Session::flash('warning','修改失败!');
         }
 

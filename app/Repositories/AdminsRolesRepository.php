@@ -24,7 +24,7 @@ class AdminsRolesRepository
      */
     public function checkRoleIsExist($role_id)
     {
-        return $this->model->where('role_id',$role_id)->first();
+        return $this->model->where('role_id',$role_id)->take(1)->first();
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminsRolesRepository
      */
     public function getByAdminId($admin_id)
     {
-        return $this->model->where('admin_id',$admin_id)->first();
+        return $this->model->where('admin_id',$admin_id)->take(1)->first();
     }
 
     /**

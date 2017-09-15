@@ -24,6 +24,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules()
     {
         $id = \Request::segment(3);
+
         return [
             'name' => 'required|between:2,30|unique:categorys,name,'.$id.',id',
             'flag' => 'required|between:2,30|unique:categorys,flag,'.$id.',id',

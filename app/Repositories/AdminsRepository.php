@@ -66,6 +66,12 @@ class AdminsRepository
         return  $this->store($input);
     }
 
+    /**
+     * 执行修改后台用户
+     *
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */
     public function handleUpdateAdmin($admin_id,$post)
     {
         $res = $this->updateAdmin($admin_id,$post);

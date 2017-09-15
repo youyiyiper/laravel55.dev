@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RoleCreateRequest;
+use App\Http\Requests\RoleUpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\RolesRepository;
 use App\Repositories\PrivilegesRepository;
@@ -54,38 +55,15 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
-        $rules = [
-            'name' => 'required|between:2,30|unique:roles',
-            'desc' => 'required|between:2,20',
-            'status' => 'between:0,1',
-        ];
-
-        $messsage = [
-            'name.required' => '角色名称不能为空',
-            'name.between'       => '角色名称必须是2~30位之间',
-            'name.unique'       => '角色名称已经存在',
-            'desc.required' => '角色描述不能为空',
-            'desc.between'  => '角色描述必须是2~30位之间',
-            'status.between'  => '状态错误',
-        ];
-
-        if ($request->has('permission')) {
-            $rules['permission'] = 'required|array';
-            $rules['permission.*'] = 'required|distinct|min:1';
-            $messsage['permission.distinct'] = '权限不能重复';
-        }        
-
-        $this->validate(request(), $rules,$messsage);
-
+    public function store(RoleCreateRequest $request)
+    {
         if ($this->RolesRpt->createRole($request->all())) {
             \Session::flash('success','添加成功!');
         }else{
             \Session::flash('warning','添加失败!');
         }
 
-        return  redirect('admin/role/create');
+        return  redirect()->back();
     }
 
     /**
@@ -121,38 +99,15 @@ class RolesController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleUpdateRequest $request, $id)
     {
-        $rules = [
-            'name' => 'required|between:2,30|unique:roles,name,'.$id.',id',
-            'desc' => 'required|between:2,20',
-            'status' => 'between:0,1',
-        ];
-
-        $messsage = [
-            'name.required' => '角色名称不能为空',
-            'name.between'       => '角色名称必须是2~30位之间',
-            'name.unique'       => '角色名称已经存在',
-            'desc.required' => '角色描述不能为空',
-            'desc.between'  => '角色描述必须是2~30位之间',
-            'status.between'  => '状态错误',
-        ];
-
-        if ($request->has('permission')) {
-            $rules['permission'] = 'required|array';
-            $rules['permission.*'] = 'required|distinct|min:1';
-            $messsage['permission.distinct'] = '权限不能重复';
-        }        
-
-        $this->validate(request(), $rules,$messsage);
-        
         if ($this->RolesRpt->updateRole($id,$request->all())) {
             \Session::flash('success','修改成功!');
         }else{
             \Session::flash('warning','修改失败!');
         }
 
-        return  redirect('admin/role/'.$id.'/edit');
+        return  redirect()->back();
     }
 
     /**
@@ -170,6 +125,6 @@ class RolesController extends Controller
         }
 
         \Session::flash('flash_notification_message','删除数据成功!');
-        return  redirect('admin/role');
+        return  redirect()->back();
     }
 }

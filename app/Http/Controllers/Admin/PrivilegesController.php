@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Requests\PrivilegeCreateRequest;
+use App\Http\Requests\PrivilegeUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\PrivilegesRepository;
@@ -46,34 +48,15 @@ class PrivilegesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrivilegeCreateRequest $request)
     {
-        $rules = [
-            'name' => 'required|between:2,30|unique:privileges',
-            'flag' => 'required|between:2,50|unique:privileges',
-            'desc' => 'required|between:2,50',
-        ];
-
-        $messsage = [
-            'name.required'     => '权限名称不能为空',
-            'name.between'      => '权限名称必须是2~30位之间',
-            'name.unique'       => '权限名称已经存在',
-            'flag.required'     => '权限标识不能为空',
-            'flag.between'      => '权限标识必须是2~30位之间',
-            'flag.unique'       => '权限标识已经存在',
-            'desc.required'     => '权限描述不能为空',
-            'desc.between'      => '权限描述必须是2~30位之间',
-        ];
-
-        $this->validate(request(), $rules,$messsage);
-        
         if ($this->PrivilegesRpt->store($request->all())) {
             \Session::flash('success','添加成功!');
         }else{
             \Session::flash('warning','添加失败!');
         }
 
-        return  redirect('admin/privilegex/create');
+        return  redirect()->back();
     }
 
     /**
@@ -106,34 +89,15 @@ class PrivilegesController extends Controller
      * @param  \App\Privilege  $Privilege
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PrivilegeUpdateRequest $request, $id)
     {
-        $rules = [
-            'name' => 'required|between:2,30|unique:privileges,name,'.$id.',id',
-            'flag' => 'required|between:2,50|unique:privileges,flag,'.$id.',id',
-            'desc' => 'required|between:2,50',
-        ];
-
-        $messsage = [
-            'name.required'     => '权限名称不能为空',
-            'name.between'      => '权限名称必须是2~30位之间',
-            'name.unique'       => '权限名称已经存在',
-            'flag.required'     => '权限标识不能为空',
-            'flag.between'      => '权限标识必须是2~30位之间',
-            'flag.unique'       => '权限标识已经存在',
-            'desc.required'     => '权限描述不能为空',
-            'desc.between'      => '权限描述必须是2~30位之间',
-        ];
-
-        $this->validate(request(), $rules,$messsage);
-        
         if ($this->PrivilegesRpt->update($id,$request->all())) {
             \Session::flash('success','修改成功!');
         }else{
             \Session::flash('warning','修改失败!');
         }
 
-        return  redirect('admin/privilege/'.$id.'/edit');
+        return  redirect()->back();
     }
 
     /**
@@ -146,6 +110,6 @@ class PrivilegesController extends Controller
     {
         $this->PrivilegesRpt->destroy($id);
         \Session::flash('flash_notification_message','删除数据成功!');
-        return  redirect('admin/privilegex');
+        return  redirect()->back();
     }
 }
