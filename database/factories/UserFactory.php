@@ -23,16 +23,3 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
-
-$factory->define(App\Admin::class, function (Faker $faker) {
-    static $password;
-
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('654321'),
-        'remember_token' => str_random(10),
-        'status' => '1',
-        'headimg' => 'asset_admin/assets/img/user-1.jpg',
-    ];
-});

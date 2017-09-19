@@ -19,6 +19,8 @@ class CreaetArticlesTable extends Migration
             $table->string('title')->length(50)->default('')->comment('文章标题');
             $table->text('content')->comment('文章内容');
             $table->string('desc')->length(120)->default('')->comment('文章描述');
+            $table->unsignedTinyInteger('is_top')->length(1)->comment('是否置顶：1置顶，0不置顶');
+            $table->tinyInteger('status')->length(1)->default(0)->comment('状态：1正，-1删除，0待发布');
             $table->timestamps();
             $table->unique('title');
         });

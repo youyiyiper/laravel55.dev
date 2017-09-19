@@ -182,6 +182,9 @@ return [
 
         //图片处理 http://laravelacademy.org/post/3585.html
         Intervention\Image\ImageServiceProvider::class,
+
+        //markdown 编辑器https://laravel-china.org/topics/853/laravel5-markdown-editor-tutorial
+        YuanChao\Editor\EndaEditorServiceProvider::class,
     ],
 
     /*
@@ -232,7 +235,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //图片处理 http://laravelacademy.org/post/3585.html
-        //'Image' => Intervention\Image\Facades\Image::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
+        //markdown 编辑器https://laravel-china.org/topics/853/laravel5-markdown-editor-tutorial
+        'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
     ],
 
 ];

@@ -66,6 +66,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
             //后台用户
             Route::resource('admin', 'adminsController');
             Route::resource('category', 'categorysController');
+            Route::resource('article', 'articlesController');
+            Route::post('article/upload','articlesController@upload');
         });
     });
 });

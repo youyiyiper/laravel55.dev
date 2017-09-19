@@ -25,8 +25,43 @@ class ArticlesRepository
         return empty(current($res)) ? true : false;
     }
 
-    public function getOneByCategoryId($category_id)
+    public function getArticlesLists()
     {
+        return $this->page(15);
+    }
 
+    /**
+     * 添加
+     *
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */
+    public function createArticle($post)
+    {
+        $input['title'] = $post['title'];
+        $input['desc'] = $post['desc'];
+        $input['content'] = $post['content'];
+        $input['is_top'] = !empty($post['is_top']) ? 1 : 0;
+        $input['category_id'] = $post['category_id'];
+
+        return $this->store($input);
+    }
+
+    /**
+     * 修改
+     *
+     * @param  [type] $id   [description]
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */
+    public function updateArticle($id,$post)
+    {
+        $input['title'] = $post['title'];
+        $input['desc'] = $post['desc'];
+        $input['content'] = $post['content'];
+        $input['is_top'] = !empty($post['is_top']) ? 1 : 0;
+        $input['category_id'] = $post['category_id'];
+
+        return $this->update($id,$input);
     }
 }

@@ -137,6 +137,14 @@ trait BaseRepository
     }
 
     /**
+     * 插入数据
+     */
+    public function insertData($data)
+    {
+        return $this->model->insert($data);
+    }
+
+    /**
      * Save the input's data.
      *
      * @param  $model
