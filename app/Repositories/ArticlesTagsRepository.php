@@ -48,4 +48,16 @@ class ArticlesTagsRepository
         $res = $this->all(['article_id' => $article_id]);
         return !empty($res) ? array_pluck($res, 'tag_id') : [];
     }
+
+    /**
+     * 检查标签是否已经被用
+     * 
+     * @param  [type] $tag_id [description]
+     * @return [type]         [description]
+     */
+    public function checkTagsIsUsed($tag_id)
+    {
+        $res = $this->getOneByWhere(array('tag_id' => $tag_id));
+        return empty(current($res)) ? true : false;        
+    }
 }

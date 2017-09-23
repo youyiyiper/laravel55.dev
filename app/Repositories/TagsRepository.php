@@ -20,6 +20,31 @@ class TagsRepository
      */
     public function getTagLists()
     {
-        return $this->model->select(['id','name'])->get();
+        return $this->model->select(['id','name'])->orderBy('name', 'asc')->get();
     }
+
+    /**
+     * 添加
+     * 
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */    
+    public function createTag($post)
+    {
+        $input['name'] = $post['name'];
+        return $this->store($input);        
+    }
+
+    /**
+     * 修改
+     * 
+     * @param  [type] $id   [description]
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */
+    public function updateTag($id,$post)
+    {
+        $input['name'] = $post['name'];
+        return $this->update($id,$input);
+    }    
 }

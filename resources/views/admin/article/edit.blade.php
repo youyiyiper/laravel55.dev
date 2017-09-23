@@ -31,25 +31,25 @@
                         <form class="form-horizontal form-bordered" data-parsley-validate="true" action="{{ url('admin/article') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="title">标题 * :</label>
+                                <label class="control-label col-md-1 col-sm-1" for="title">标题 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <input class="form-control" type="text" name="title" placeholder="标题" value="{{ $article->title }}" data-parsley-required="true" data-parsley-required-message="请输入文章标题" data-parsley-length="[2,50]" data-parsley-length-message="文章标题长度2~50字符" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="desc">描述 * :</label>
+                                <label class="control-label col-md-1 col-sm-1" for="desc">描述 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <input class="form-control" type="text" name="desc" placeholder="描述"  value="{{ $article->desc }}" data-parsley-required="true" data-parsley-required-message="请输入文章描述" data-parsley-length="[2,120]" data-parsley-length-message="文章描述名称长度2~120字符"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="is_top">置顶 * :</label>
+                                <label class="control-label col-md-1 col-sm-1" for="is_top">置顶 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <input type="checkbox" name="is_top" data-render="switchery" data-theme="purple" value="{{$article->is_top}}" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="category_id">分类 * :</label>
+                                <label class="control-label col-md-1 col-sm-1" for="category_id">分类 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <select class="form-control" name="category_id">
                                         <option value="">请选择</option>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="status">标签 * :</label>
+                                <label class="control-label col-md-1 col-sm-1" for="status">标签 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <select class="form-control select2" name="tag[]" multiple="multiple">
                                         @foreach($tags as $value)
@@ -70,8 +70,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="content">内容 * :</label>
-                                <div class="col-md-10 col-sm-10">
+                                <label class="control-label col-md-1 col-sm-1" for="content">内容 * :</label>
+                                <div class="col-md-11 col-sm-11">
                                     @include('vendor.editor.head')
                                     <div class="editor">
                                         <textarea id='myEditor' name="content">{{$article->content}}</textarea>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2"></label>
+                                <label class="control-label col-md-1 col-sm-1"></label>
                                 <div class="col-md-4 col-sm-4">
                                     <button type="submit" class="btn btn-primary">提交</button>
                                 </div>

@@ -58,16 +58,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
             Route::post('crop/handle','CropController@handle');
 
             //角色
-            Route::resource('role', 'rolesController');
+            Route::resource('role', 'RolesController');
             //权限
-            Route::resource('privilege', 'privilegesController');
+            Route::resource('privilege', 'PrivilegesController');
             //菜单
-            Route::resource('sidebar', 'sidebarsController');
+            Route::resource('sidebar', 'SidebarsController');
             //后台用户
-            Route::resource('admin', 'adminsController');
-            Route::resource('category', 'categorysController');
-            Route::resource('article', 'articlesController');
-            Route::post('article/upload','articlesController@upload');
+            Route::resource('admin', 'AdminsController');
+            //文章分类
+            Route::resource('category', 'CategorysController');
+            //文章
+            Route::resource('article', 'ArticlesController');
+            Route::post('article/upload','ArticlesController@upload');
+            //标签
+            Route::resource('tag', 'TagsController');
         });
     });
 });
