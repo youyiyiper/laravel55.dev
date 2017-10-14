@@ -10,7 +10,7 @@
         <!-- begin breadcrumb -->
         <ol class="breadcrumb pull-left">
             <li><a href="/admin">首页</a></li>
-            <li class="active">文章列表</li>
+            <li class="active">配置列表</li>
         </ol>
         <!-- end breadcrumb -->
 
@@ -22,45 +22,36 @@
                 <div class="panel panel-inverse" data-sortable-id="table-basic-5">
                     <div class="panel-heading">
                         @include('admin.layouts.panel-btn')
-                        <h4 class="panel-title">文章列表</h4>
+                        <h4 class="panel-title">配置列表</h4>
                     </div>
                     <div class="panel-body">
-                        <a href="{{ url('admin/article/create') }}">
+                        <a href="{{ url('admin/config/create') }}">
                             <button type="button" class="btn btn-primary m-r-5 m-b-5"><i class="fa fa-plus-square-o"></i> 新增</button>
                         </a>
                         <table class="table table-bordered table-hover" id="datatable">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>标题</th>
-                                    <th>置顶</th>
-                                    <th>分类</th>
+                                    <th>名称</th>
+                                    <th>标识</th>
                                     <th>添加时间</th>
                                     <th>更新时间</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($articles as $article)
-                                <tr>
-                                    <td>{{$article->id}}</td>
-                                    <td>{{$article->title}}</td>
-                                    <td>{{$article->is_top}}</td>
-                                    <td>{{$article->category_id}}</td>
-                                    <td>{{$article->created_at}}</td>
-                                    <td>{{$article->updated_at}}</td>
-                                    <td>
-                                        <a href="{{ url('admin/article',[$article->id,'edit']) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil"> 编辑</i></button></a>
-                                        <a href="{{ url('admin/article',[$article->id]) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil"> 预览</i></button></a>
-                                        <a href="javascript:;" data-id="{{ $article->id }}" class="btn btn-danger btn-xs destroy">
-                                            <i class="fa fa-trash"> 删除</i>
-                                            <form action="{{ url('admin/article',[$article->id]) }}" method="POST" name="delete_item_{{ $article->id }}" style="display:none">
-                                                {{ method_field('DELETE') }}{{ csrf_field() }}
-                                            </form>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach ($configs as $config)
+                                    <tr>
+                                        <td>{{$config->id}}</td>
+                                        <td>{{$config->name}}</td>
+                                        <td>{{$config->keyword}}</td>
+                                        <td>{{$config->created_at}}</td>
+                                        <td>{{$config->updated_at}}</td>
+                                        <td>
+                                            <a href="{{ url('admin/config',[$config->id,'edit']) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil"> 编辑</i></button></a>
+                                        </td>
+                                    </tr>                                    
+                                @endforeach                                
                             </tbody>
                         </table>
                     </div>
@@ -82,8 +73,7 @@
             @if (session()->has('flash_notification_message'))
                 $.gritter.add({
                     title: '操作消息！',
-                    text: '{!! session('flash_notification_message') !!}',
-                    class_name: 'gritter-success'//gritter-center  
+                    text: '{!! session('flash_notification_message') !!}'
                 });
             @endif
 
@@ -107,5 +97,4 @@
             });
         });
     </script>
-
 @endsection

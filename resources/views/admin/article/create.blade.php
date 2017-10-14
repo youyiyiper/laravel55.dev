@@ -4,6 +4,8 @@
     <link href="{{ asset('asset_admin/assets/plugins/parsley/src/parsley.css') }}" rel="stylesheet" />
     <link href="{{ asset('asset_admin/assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('asset_admin/assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css') }}" rel="stylesheet" />
 @endsection
 
 @section('admin-content')
@@ -59,6 +61,7 @@
                                     </select>
                                 </div>
                             </div>
+                                                       
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1" for="status">标签 * :</label>
                                 <div class="col-md-4 col-sm-4">
@@ -69,6 +72,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1" for="published_at">发布时间 * :</label>
+                                <div class="col-md-4 col-sm-4">
+                                    <input class="form-control time" type="text" name="published_at" placeholder="发布时间"  value="{{ date('Y-m-d H:i:s') }}" data-parsley-required="true" data-parsley-required-message="请选择发布时间" data-parsley-length="[19]" data-parsley-length-message="请选择发布时间"/>
+                                </div>
+                            </div>                             
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1" for="content">内容 * :</label>
                                 <div class="col-md-11 col-sm-11">
@@ -135,4 +144,17 @@
             }
         }
     </script>
+
+    <script src="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js')}}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.time').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii:ss',
+                language:"zh-CN",
+                minView:0,
+                autoclose:true
+            });
+        });
+    </script>    
 @endsection

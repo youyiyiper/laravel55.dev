@@ -4,6 +4,8 @@
     <link href="{{ asset('asset_admin/assets/plugins/parsley/src/parsley.css') }}" rel="stylesheet" />
     <link href="{{ asset('asset_admin/assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('asset_admin/assets/plugins/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css') }}" rel="stylesheet" />
 @endsection
 
 @section('admin-content')
@@ -28,8 +30,9 @@
                     </div>
                     @include('layouts.flash')
                     <div class="panel-body panel-form">
-                        <form class="form-horizontal form-bordered" data-parsley-validate="true" action="{{ url('admin/article') }}" method="POST">
-                            {{ csrf_field() }}
+                        <form class="form-horizontal form-bordered" data-parsley-validate="true" action="{{ url('admin/article/'.$article->id) }}" method="POST">
+                             {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1" for="title">标题 * :</label>
                                 <div class="col-md-4 col-sm-4">
@@ -45,7 +48,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1" for="is_top">置顶 * :</label>
                                 <div class="col-md-4 col-sm-4">
-                                    <input type="checkbox" name="is_top" data-render="switchery" data-theme="purple" value="{{$article->is_top}}" />
+                                    <input type="checkbox" name="is_top" data-render="switchery" data-theme="purple" value="{{$article->is_top}}" @if($article->is_top == 1) checked="checked" @endif/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -54,7 +57,7 @@
                                     <select class="form-control" name="category_id">
                                         <option value="">请选择</option>
                                         @foreach($parentCategorys as $value)
-                                            <option value="{{$value['id']}}" @if($value['category_id'] == $article->category_id) selected="selected" @endif>{{$value['name']}}</option>
+                                            <option value="{{$value['id']}}" @if($value['id'] == $article->category_id) selected="selected" @endif>{{$value['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,6 +72,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1 col-sm-1" for="published_at">发布时间 * :</label>
+                                <div class="col-md-4 col-sm-4">
+                                    <input class="form-control time" type="text" name="published_at" placeholder="发布时间"  value="{{ $article->published_at }}" data-parsley-required="true" data-parsley-required-message="请选择发布时间" data-parsley-length="[19]" data-parsley-length-message="请选择发布时间"/>
+                                </div>
+                            </div>                            
                             <div class="form-group">
                                 <label class="control-label col-md-1 col-sm-1" for="content">内容 * :</label>
                                 <div class="col-md-11 col-sm-11">
@@ -100,7 +109,6 @@
     <script src="{{ asset('asset_admin/assets/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('asset_admin/assets/plugins/select2/dist/js/select2.min.js')}}"></script>
     <script>
-
         $('.select2').select2({
             placeholder:'请选择',
             allowClear:true
@@ -134,5 +142,19 @@
                 });
             }
         }
+    </script>
+    
+    <!-- 时间插件 -->
+    <script src="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{ asset('asset_admin/assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js')}}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.time').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii:ss',
+                language:"zh-CN",
+                minView:0,
+                autoclose:true
+            });
+        });
     </script>
 @endsection

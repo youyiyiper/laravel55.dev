@@ -31,6 +31,7 @@ class ArticleCreateRequest extends FormRequest
             'tag' => 'required|array',
             'tag.*' => 'required|distinct|min:1',
             'content' => 'required',
+            'published_at' => 'required',
         ];
     }
 
@@ -47,6 +48,7 @@ class ArticleCreateRequest extends FormRequest
             'tag.required'  => '请选择标签',
             'tag.distinct'  => '标签不能重复',
             'content.required'  => '内容不能为空',
+            'published_at.required'  => '发布时间不能为空',
         ];
     }
 }

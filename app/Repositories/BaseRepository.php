@@ -145,6 +145,14 @@ trait BaseRepository
     }
 
     /**
+     * 插入数据
+     */
+    public function updateData($where,$data)
+    {
+        return $this->model->where($where)->update($data);
+    }
+
+    /**
      * Save the input's data.
      *
      * @param  $model

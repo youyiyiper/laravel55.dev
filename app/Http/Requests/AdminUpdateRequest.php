@@ -26,7 +26,7 @@ class AdminUpdateRequest extends FormRequest
         $id = \Request::segment(3);
 
         $rules = [
-            'email' => 'required|email|unique:admins,name,'.$id,',id',
+            'email' => 'required|email|unique:admins,email,'.$id,',id',
             'name' => 'required|between:2,20',
             'role_id' => 'required|min:1',
         ];

@@ -22,6 +22,7 @@ class CreaetArticlesTable extends Migration
             $table->unsignedTinyInteger('is_top')->length(1)->comment('是否置顶：1置顶，0不置顶');
             $table->tinyInteger('status')->length(1)->default(0)->comment('状态：1正，-1删除，0待发布');
             $table->timestamps();
+            $table->timestamp('published_at')->nullable()->comment('发布时间');
             $table->unique('title');
         });
     }

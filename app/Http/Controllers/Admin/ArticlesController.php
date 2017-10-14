@@ -62,11 +62,10 @@ class ArticlesController extends Controller
     {
         $parentCategorys = $this->CategorysRpt->getOptionLists();
         $parentCategorys = noLimitCategory($parentCategorys);
-        $tags = $this->TagsRpt->getTagLists();
 
         return view('admin.article.create')->with([
             'parentCategorys' => $parentCategorys,
-            'tags' => $tags
+            'tags' => $this->TagsRpt->getTagLists()
         ]);
     }
 
@@ -97,7 +96,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = $this->ArticlesRpt->getById($id);
+        $article->content = \EndaEditor::MarkDecode($article->content);
+        return view('admin.article.show')->with(['article' => $article]);        
     }
 
     /**
@@ -108,19 +109,14 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        $article = $this->ArticlesRpt->getById($id);
-        #$article->content = \EndaEditor::MarkDecode($article->content);
-
         $parentCategorys = $this->CategorysRpt->getOptionLists();
         $parentCategorys = noLimitCategory($parentCategorys);
-        $tags = $this->TagsRpt->getTagLists();
-        $tagArr = $this->ArticlesTagsRpt->getTagIdArrByArticleId($id);
 
         return view('admin.article.edit')->with([
-            'article' => $article,
+            'article' => $this->ArticlesRpt->getById($id),
             'parentCategorys' => $parentCategorys,
-            'tags' => $tags,
-            'tagArr' => $tagArr
+            'tags' => $this->TagsRpt->getTagLists(),
+            'tagArr' => $this->ArticlesTagsRpt->getTagIdArrByArticleId($id)
         ]);
     }
 

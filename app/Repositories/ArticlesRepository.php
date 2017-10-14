@@ -31,6 +31,24 @@ class ArticlesRepository
     }
 
     /**
+     * 整合表单输入
+     * 
+     * @param  [type] $post [description]
+     * @return [type]       [description]
+     */
+    public function getInput($post)
+    {
+        $input['title'] = $post['title'];
+        $input['desc'] = $post['desc'];
+        $input['content'] = $post['content'];
+        $input['is_top'] = !empty($post['is_top']) ? 1 : 0;
+        $input['category_id'] = $post['category_id'];
+        $input['published_at'] = $post['published_at'];
+
+        return $input;
+    }
+
+    /**
      * 添加
      *
      * @param  [type] $post [description]
@@ -38,12 +56,7 @@ class ArticlesRepository
      */
     public function createArticle($post)
     {
-        $input['title'] = $post['title'];
-        $input['desc'] = $post['desc'];
-        $input['content'] = $post['content'];
-        $input['is_top'] = !empty($post['is_top']) ? 1 : 0;
-        $input['category_id'] = $post['category_id'];
-
+        $input = $this->getInput($post);
         return $this->store($input);
     }
 
@@ -56,12 +69,17 @@ class ArticlesRepository
      */
     public function updateArticle($id,$post)
     {
-        $input['title'] = $post['title'];
-        $input['desc'] = $post['desc'];
-        $input['content'] = $post['content'];
-        $input['is_top'] = !empty($post['is_top']) ? 1 : 0;
-        $input['category_id'] = $post['category_id'];
-
+        $input = $this->getInput($post);
         return $this->update($id,$input);
+    }
+
+    /**
+     * 自动发布文章
+     * 
+     * @return [type] [description]
+     */
+    public function autoPublicedArticles()
+    {
+        return $this->updateData(array('published_at <=' => date('Y-m-d H:i:s'),'status' => 0),array('status' => 1));
     }
 }
