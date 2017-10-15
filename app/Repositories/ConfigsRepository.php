@@ -20,7 +20,7 @@ class ConfigsRepository
      */
     public function getConfigLists()
     {
-        return $this->model->select(['id','name','keyword','created_at','updated_at'])->orderBy('name', 'asc')->get();
+        return $this->model->select(['id','name','keyword','created_at','updated_at'])->orderBy('name', 'asc')->paginate(1);
     }
 
     /**

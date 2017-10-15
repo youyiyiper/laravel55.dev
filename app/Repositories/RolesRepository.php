@@ -24,7 +24,7 @@ class RolesRepository
     public function getRolesLists($status = 1)
     {
         if ($status == 'all') {
-            return $this->model->where('status','>',-1)->latest()->get();
+            return $this->model->where('status','>',-1)->latest()->paginate(1);;
         } else {
             return $this->model->where('status',$status)->latest()->get();
         }

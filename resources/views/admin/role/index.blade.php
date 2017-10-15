@@ -63,6 +63,7 @@
                                 @endforeach                                
                             </tbody>
                         </table>
+                        {{$roles->links()}}
                     </div>
                 </div>
                 <!-- end panel -->

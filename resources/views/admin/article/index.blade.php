@@ -41,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($articles as $article)
+                                @foreach ($articles as $article)
                                 <tr>
                                     <td>{{$article->id}}</td>
                                     <td>{{$article->title}}</td>
@@ -60,9 +60,10 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
+                        {{$articles->links()}}
                     </div>
                 </div>
                 <!-- end panel -->

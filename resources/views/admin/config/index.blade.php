@@ -54,6 +54,7 @@
                                 @endforeach                                
                             </tbody>
                         </table>
+                        {{$configs->links()}}
                     </div>
                 </div>
                 <!-- end panel -->

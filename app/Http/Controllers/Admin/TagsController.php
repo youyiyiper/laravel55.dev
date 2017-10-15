@@ -10,16 +10,16 @@ use App\Repositories\ArticlesTagsRepository;
 
 class TagsController extends Controller
 {
-    protected $TagysRpt;
+    protected $TagsRpt;
     protected $ArticlesTagsRpt;
 
     public function __construct(
-        TagsRepository $TagysRpt,
+        TagsRepository $TagsRpt,
         ArticlesTagsRepository $ArticlesTagsRpt
     )
     {
-        $this->TagysRpt = $TagysRpt;
-        $this->ArticlesTagsRpt = $ArticlesTagsRpt;
+       $this->TagsRpt = $TagsRpt;
+       $this->ArticlesTagsRpt = $ArticlesTagsRpt;
     }    
 
     /**
@@ -28,8 +28,8 @@ class TagsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $tags = $this->TagysRpt->getTagLists();
+    {   
+        $tags = $this->TagsRpt->getTagLists();
         return view('admin.tag.index')->with('tags',$tags);
     }
 
@@ -51,7 +51,7 @@ class TagsController extends Controller
      */
     public function store(TagCreateRequest $request)
     {
-        if ($this->TagysRpt->createTag($request->all())) {
+        if ($this->TagsRpt->createTag($request->all())) {
             \Session::flash('success','添加成功!');
         } else {
             \Session::flash('warning','添加失败!');
@@ -79,7 +79,7 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        $tag = $this->TagysRpt->getById($id);
+        $tag = $this->TagsRpt->getById($id);
         return view('admin.tag.edit')->with('tag',$tag);
     }
 
@@ -92,7 +92,7 @@ class TagsController extends Controller
      */
     public function update(TagUpdateRequest $request, $id)
     {
-        if ($this->TagysRpt->updateTag($id,$request->all())) {
+        if ($this->TagsRpt->updateTag($id,$request->all())) {
             \Session::flash('success','修改成功!');
         } else {
             \Session::flash('warning','修改失败!');
@@ -112,7 +112,7 @@ class TagsController extends Controller
         if (!$this->ArticlesTagsRpt->checkTagsIsUsed($id)) {
             \Session::flash('flash_notification_message','删除数据失败,标签已经被使用!');
         } else {
-            $this->TagysRpt->destroy($id);
+            $this->TagsRpt->destroy($id);
             \Session::flash('flash_notification_message','删除数据成功!');
         }
         
