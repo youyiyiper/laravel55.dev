@@ -45,17 +45,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
         //退出
         Route::get('logout', 'LoginController@logout');
 
+        //修改密码
+        Route::get('manager/changePwd','ManagerController@changePwd');
+        Route::post('manager/postChangePwd','ManagerController@postChangePwd');
+
+        //信息中心
+        Route::get('manager/setting','ManagerController@setting');
+        Route::post('crop/upload','CropController@upload');
+        Route::post('crop/handle','CropController@handle');        
+
         //用中间件rabc.check 来验证是否有权限操作
         Route::group(['middleware' => 'rabc.check'], function () {
-
-            //修改密码
-            Route::get('manager/changePwd','ManagerController@changePwd');
-            Route::post('manager/postChangePwd','ManagerController@postChangePwd');
-
-            //信息中心
-            Route::get('manager/setting','ManagerController@setting');
-            Route::post('crop/upload','CropController@upload');
-            Route::post('crop/handle','CropController@handle');
 
             //角色
             Route::resource('role', 'RolesController');
