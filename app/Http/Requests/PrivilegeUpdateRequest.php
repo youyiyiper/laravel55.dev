@@ -29,6 +29,7 @@ class PrivilegeUpdateRequest extends FormRequest
             'name' => 'required|between:2,30|unique:privileges,name,'.$id.',id',
             'flag' => 'required|between:2,50|unique:privileges,flag,'.$id.',id',
             'desc' => 'required|between:2,50',
+            'pid' => 'required|integer',
         ];
     }
 
@@ -43,6 +44,7 @@ class PrivilegeUpdateRequest extends FormRequest
             'flag.unique'       => '权限标识已经存在',
             'desc.required'     => '权限描述不能为空',
             'desc.between'      => '权限描述必须是2~50位之间',
+            'pid.integer'       => '上级权限必须为数字',
         ];
     }
 }

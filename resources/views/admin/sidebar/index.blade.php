@@ -35,7 +35,6 @@
                                     <th>ID</th>
                                     <th>名称</th>
                                     <th>icon</th>
-                                    <th>菜单权限</th>
                                     <th>菜单地址</th>
                                     <th>创建时间</th>
                                     <th>更新时间</th>
@@ -48,7 +47,6 @@
                                         <td>{{$sidebar['id']}}</td>
                                         <td>{{ str_repeat('&nbsp;',$sidebar['level']*4)}} {{$sidebar['name']}}</td>
                                         <td>{{$sidebar['class']}}</td>
-                                        <td>{{$sidebar['purview_flag']}}</td>
                                         <td>{{$sidebar['url']}}</td>
                                         <td>{{$sidebar['created_at']}}</td>
                                         <td>{{$sidebar['updated_at']}}</td>

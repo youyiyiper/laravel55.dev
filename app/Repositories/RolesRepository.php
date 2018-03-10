@@ -24,10 +24,24 @@ class RolesRepository
     public function getRolesLists($status = 1)
     {
         if ($status == 'all') {
-            return $this->model->where('status','>',-1)->latest()->paginate(20);;
+            return $this->model->where('status','>',-1)->latest()->paginate(20);
         } else {
             return $this->model->where('status',$status)->latest()->get();
         }
+    }
+
+    /**
+     * 通过角色id获取权限规则
+     *
+     * @param  integer $role_id 角色id
+     * @return string 
+     */
+    public function getRulesByRoleId($role_id)
+    {
+        return $this->model->where([
+            ['id','=',$role_id],
+            ['status','>',0]
+        ])->pluck('rules')->first();
     }
 
     /**

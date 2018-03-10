@@ -39,7 +39,9 @@ class PrivilegesController extends Controller
      */
     public function create()
     {
-        return view('admin.privilege.create');
+        $parentPrivilege = $this->PrivilegesRpt->getOptionPrivileges();
+        $parentPrivilege = noLimitCategory($parentPrivilege);
+        return view('admin.privilege.create')->with('parentPrivilege',$parentPrivilege);;
     }
 
     /**
@@ -78,8 +80,10 @@ class PrivilegesController extends Controller
      */
     public function edit($id)
     {
-        $privilege = $this->PrivilegesRpt->getById($id);
-        return view('admin.privilege.edit')->with('privilege',$privilege);
+        $parentPrivilege = $this->PrivilegesRpt->getOptionPrivileges();
+        $parentPrivilege = noLimitCategory($parentPrivilege);       
+        $privilege = $this->PrivilegesRpt->getById($id);       
+        return view('admin.privilege.edit',['privilege' => $privilege,'parentPrivilege' => $parentPrivilege]);
     }
 
     /**

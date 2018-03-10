@@ -42,18 +42,24 @@ class AdminAuthMiddleware
     {
         if (!session('adminDetail')) {
             $adminDetail = auth('admin')->user()->toArray();
-
             if (!$adminDetail) {
                 return redirect()->guest('admin/login');
-            } else {
-                foreach ($adminDetail as $key => $value) {
-                    session(['adminDetail.'.$key => $value]);
-                }
-
-                return true;
             }
-        }
 
-        return false;
+            foreach ($adminDetail as $key => $value) {
+                session(['adminDetail.'.$key => $value]);
+            }
+
+            $role_id = (new \App\AdminsRole)->where('admin_id',$adminDetail['id'])->pluck('role_id')->first();
+            if ($role_id) {
+                session(['adminDetail.role_id' => $role_id]);
+            }else{
+                session(['adminDetail.role_id' => 0]);
+            }
+                            
+            return true;
+        }
+                    
+        return true;
     }
 }

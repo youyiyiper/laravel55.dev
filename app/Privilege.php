@@ -10,5 +10,6 @@ class Privilege extends Model
         'name',
         'desc',
         'flag',
+        'pid',
     ];
 }

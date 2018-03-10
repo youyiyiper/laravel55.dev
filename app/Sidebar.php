@@ -8,7 +8,6 @@ class Sidebar extends Model
 {
     protected $fillable = [
         'name',
-        'purview_flag',
         'url',
         'class',
         'pid',

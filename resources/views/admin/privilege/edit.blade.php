@@ -48,6 +48,26 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2" for="pid">上级权限 * :</label>
+                                <div class="col-md-4 col-sm-4">
+                                    <select class="form-control selectpicker"
+                                            data-live-search="true"
+                                            data-style="btn-white"
+                                            data-parsley-required="true"
+                                            data-parsley-errors-container="#parent_id_error"
+                                            data-parsley-required-message="请选择上级权限"
+                                            name="pid">
+                                        <option value="0">-- 顶级权限 --</option>
+                                        @foreach($parentPrivilege as $value)
+                                            @if($value['id'] != $privilege->id)
+                                            <option value="{{ $value['id'] }}" @if($value['id'] == $privilege->pid) selected="selected" @endif>{{ str_repeat('&nbsp;',$value['level'] * 4) }} {{ $value['name'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <p id="parent_id_error"></p>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2"></label>
                                 <div class="col-md-4 col-sm-4">
                                     <button type="submit" class="btn btn-primary">提交</button>

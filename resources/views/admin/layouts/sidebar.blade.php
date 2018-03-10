@@ -5,7 +5,7 @@
         <ul class="nav">
             <li class="nav-profile">
                 <div class="image">
-                    <a href="javascript:;"><img src="{{ asset(!empty(session('adminDetail.headimg')) ? session('adminDetail.headimg') : 'asset_admin/assets/img/user-1.jpg') }}" alt="" /></a>
+                    <a href="javascript:;"><img src="{{ asset(!empty(session('adminDetail.headimg')) ? session('adminDetail.headimg') : 'asset_admin/assets/img/user-1.jpg') }}" alt="{{ session('adminDetail.name') }}" /></a>
                 </div>
                 <div class="info">
                     {{ session('adminDetail.name') }}

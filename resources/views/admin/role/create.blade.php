@@ -11,14 +11,20 @@
             margin-left:60px;
         }
         #permission .level2{
-            margin-left:120px;
+            margin-left:100px;
         }
         #permission .level3{
-            margin-left:180px;
+            margin-left:140px;
         }
         #permission .level4{
-            margin-left:240px;
+            margin-left:180px;
         }
+        #permission .level5{
+            margin-left:220px;
+        }
+        #permission .level6{
+            margin-left:260px;
+        }                
     </style>
 @endsection
 

@@ -43,12 +43,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2 col-sm-2" for="purview_flag">权限名称 * :</label>
-                                <div class="col-md-4 col-sm-4">
-                                    <input class="form-control" type="text" name="purview_flag" placeholder="权限名称" data-parsley-required="true" data-parsley-required-message="请输入权限名称" value="{{ $sidebar->purview_flag}}"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2" for="class">菜单图标 * :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <input class="form-control" type="text" name="class" placeholder="菜单图标" value="{{ $sidebar->class }}"/>
