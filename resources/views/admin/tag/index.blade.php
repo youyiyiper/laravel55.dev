@@ -59,6 +59,7 @@
                                 @endforeach                                
                             </tbody>
                         </table>
+                        {{$tags->links()}}
                     </div>
                 </div>
                 <!-- end panel -->

@@ -27,7 +27,7 @@ class ArticlesRepository
 
     public function getArticlesLists()
     {
-        return $this->page(15);
+        return $this->page(20);
     }
 
     /**

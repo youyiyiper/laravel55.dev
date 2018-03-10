@@ -28,6 +28,7 @@
                         <a href="{{ url('admin/admin/create') }}">
                             <button type="button" class="btn btn-primary m-r-5 m-b-5"><i class="fa fa-plus-square-o"></i> 新增</button>
                         </a>
+                                                
                         <table class="table table-bordered table-hover" id="datatable">
                             <thead>
                                 <tr>

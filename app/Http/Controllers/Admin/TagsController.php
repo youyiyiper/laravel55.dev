@@ -29,7 +29,7 @@ class TagsController extends Controller
      */
     public function index()
     {   
-        $tags = $this->TagsRpt->getTagLists();
+        $tags = $this->TagsRpt->getAllTagLists();
         return view('admin.tag.index')->with('tags',$tags);
     }
 

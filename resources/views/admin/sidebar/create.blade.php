@@ -51,6 +51,7 @@
                                 <label class="control-label col-md-2 col-sm-2" for="class">菜单图标 :</label>
                                 <div class="col-md-4 col-sm-4">
                                     <input class="form-control" type="text" name="class" placeholder="菜单图标" value="{{ old('class') }}" />
+                                    <p style="line-height: 25px;height:25px;"><a href="http://www.bootcss.com/p/font-awesome/" target="_blank" >http://www.bootcss.com/p/font-awesome/</a></p>
                                 </div>
                             </div>
                             <div class="form-group">

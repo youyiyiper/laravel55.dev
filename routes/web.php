@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
             Route::resource('privilege', 'PrivilegesController');
             //菜单
             Route::resource('sidebar', 'SidebarsController');
+           
             //配置
             Route::resource('config', 'ConfigsController');
             //后台用户

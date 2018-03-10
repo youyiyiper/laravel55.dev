@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 本地---localhost_3306
 Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : laravel55.dev
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2017-10-01 00:11:05
+Date: 2018-03-10 10:52:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ INSERT INTO `la_admins` VALUES ('6', 'Holden Bartell', '1', 'asset_admin/assets/
 INSERT INTO `la_admins` VALUES ('7', 'Shayne Mosciski', '1', 'asset_admin/assets/img/user-1.jpg', 'greg.schaden@example.net', '$2y$10$F7J8zSN9pxezHd2Dtxg/6Ozm4WNZW9e07ROY391GwSa2LAQuHfTOC', 'agbMz8ulFh', '2017-09-18 15:26:24', '2017-09-18 15:26:24');
 INSERT INTO `la_admins` VALUES ('8', 'Christine Bruen II', '1', 'asset_admin/assets/img/user-1.jpg', 'trevor81@example.com', '$2y$10$F7J8zSN9pxezHd2Dtxg/6Ozm4WNZW9e07ROY391GwSa2LAQuHfTOC', 'DHDPRxu1ee', '2017-09-18 15:26:24', '2017-09-18 15:26:24');
 INSERT INTO `la_admins` VALUES ('9', 'Skye Ritchie Jr.', '1', 'asset_admin/assets/img/user-1.jpg', 'phettinger@example.net', '$2y$10$F7J8zSN9pxezHd2Dtxg/6Ozm4WNZW9e07ROY391GwSa2LAQuHfTOC', 'lGRIINAxVV', '2017-09-18 15:26:24', '2017-09-18 15:26:24');
-INSERT INTO `la_admins` VALUES ('10', 'Dr. Deon Hilll MD', '1', 'asset_admin/assets/img/user-1.jpg', 'lgusikowski@example.org', '$2y$10$F7J8zSN9pxezHd2Dtxg/6Ozm4WNZW9e07ROY391GwSa2LAQuHfTOC', 'd5xVQpoC9A', '2017-09-18 15:26:24', '2017-09-18 15:26:24');
+INSERT INTO `la_admins` VALUES ('10', 'Dr. Deon Hilll MD', '1', 'uploads/20171013/cropped-15079099291928612031.jpg', 'lgusikowski@example.org', '$2y$10$F7J8zSN9pxezHd2Dtxg/6Ozm4WNZW9e07ROY391GwSa2LAQuHfTOC', 'd5xVQpoC9A', '2017-09-18 15:26:24', '2017-10-13 23:52:22');
 
 -- ----------------------------
 -- Table structure for la_admins_roles
@@ -59,11 +59,13 @@ CREATE TABLE `la_admins_roles` (
   UNIQUE KEY `admins_roles_admin_id_role_id_unique` (`admin_id`,`role_id`),
   KEY `admins_roles_admin_id_index` (`admin_id`),
   KEY `admins_roles_role_id_index` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of la_admins_roles
 -- ----------------------------
+INSERT INTO `la_admins_roles` VALUES ('1', '9', '2');
+INSERT INTO `la_admins_roles` VALUES ('2', '10', '1');
 
 -- ----------------------------
 -- Table structure for la_articles
@@ -142,6 +144,26 @@ INSERT INTO `la_categorys` VALUES ('2', '0', 'linux', 'linux', 'linux', '1', '20
 INSERT INTO `la_categorys` VALUES ('3', '1', 'laravel', 'laravel', 'laravel', '1', '2017-09-18 21:42:57', '2017-09-18 21:43:13');
 
 -- ----------------------------
+-- Table structure for la_configs
+-- ----------------------------
+DROP TABLE IF EXISTS `la_configs`;
+CREATE TABLE `la_configs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '名称',
+  `keyword` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '内容',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of la_configs
+-- ----------------------------
+INSERT INTO `la_configs` VALUES ('1', 'aa', 'aa', 'aaaccc', '2017-10-14 23:09:39', '2017-10-14 23:26:25');
+INSERT INTO `la_configs` VALUES ('2', 'bbb', 'cbbb', 'cccc', '2017-10-15 10:52:16', '2017-10-15 10:52:16');
+
+-- ----------------------------
 -- Table structure for la_migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `la_migrations`;
@@ -150,7 +172,7 @@ CREATE TABLE `la_migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of la_migrations
@@ -166,6 +188,7 @@ INSERT INTO `la_migrations` VALUES ('8', '2017_09_14_165225_creaet_articles_tabl
 INSERT INTO `la_migrations` VALUES ('9', '2017_09_14_165302_creaet_categorys_table', '1');
 INSERT INTO `la_migrations` VALUES ('10', '2017_09_18_144029_create_tags_table', '1');
 INSERT INTO `la_migrations` VALUES ('11', '2017_09_18_144548_create_articles_tags_table', '1');
+INSERT INTO `la_migrations` VALUES ('12', '2017_10_11_225534_create_configs_table', '2');
 
 -- ----------------------------
 -- Table structure for la_password_resets
@@ -245,7 +268,7 @@ CREATE TABLE `la_sidebars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of la_sidebars
@@ -259,6 +282,7 @@ INSERT INTO `la_sidebars` VALUES ('6', '文章管理', '', '', '0', '0', '', '20
 INSERT INTO `la_sidebars` VALUES ('7', '文章分类', '', 'category_index', '0', '6', 'admin/category', '2017-09-14 17:08:21', '2017-09-14 17:08:21');
 INSERT INTO `la_sidebars` VALUES ('8', '文章列表', '', 'article_index', '0', '6', 'admin/article', '2017-09-14 17:08:21', '2017-09-14 17:08:21');
 INSERT INTO `la_sidebars` VALUES ('9', '标签列表', '', 'tag_index', '0', '6', 'admin/tag', '2017-09-14 17:08:21', '2017-09-14 17:08:21');
+INSERT INTO `la_sidebars` VALUES ('10', '常用配置', '', 'config_index', '0', '1', 'admin/config', '2017-10-11 22:22:19', '2017-10-11 22:22:19');
 
 -- ----------------------------
 -- Table structure for la_tags
@@ -270,13 +294,14 @@ CREATE TABLE `la_tags` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of la_tags
 -- ----------------------------
 INSERT INTO `la_tags` VALUES ('1', 'jquery', null, '2017-09-23 11:00:20');
 INSERT INTO `la_tags` VALUES ('3', 'linux', '2017-09-23 10:53:27', '2017-09-23 10:53:27');
+INSERT INTO `la_tags` VALUES ('4', 'javascript', '2017-10-11 22:18:18', '2017-10-11 22:18:18');
 
 -- ----------------------------
 -- Table structure for la_users

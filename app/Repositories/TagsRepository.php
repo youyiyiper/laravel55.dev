@@ -24,6 +24,14 @@ class TagsRepository
     }
 
     /**
+     * 获取标签列表
+     */
+    public function getAllTagLists()
+    {
+        return $this->model->orderBy('name', 'asc')->paginate(20);
+    }    
+
+    /**
      * 添加
      * 
      * @param  [type] $post [description]

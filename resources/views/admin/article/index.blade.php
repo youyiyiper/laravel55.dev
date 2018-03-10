@@ -28,6 +28,16 @@
                         <a href="{{ url('admin/article/create') }}">
                             <button type="button" class="btn btn-primary m-r-5 m-b-5"><i class="fa fa-plus-square-o"></i> 新增</button>
                         </a>
+                        <table class="table table-bordered form-group" id="search">
+                             <tr>
+                                <th><input class="form-control" type="text" name="id" condition="eq" placeholder="ID" value="{{ old('ID') }}"/></th>
+                                <th><input class="form-control" type="text" name="name" condition="eq" placeholder="名称" value="{{ old('name') }}"/></th>
+                                <th><input class="form-control" type="text" name="flag" condition="eq" placeholder="权限" value="{{ old('flag') }}"/></th>
+                                <th><input class="form-control form_datetime" type="text" name="created_at" condition="elt" placeholder="添加时间" value="{{ old('created_at') }}"/></th>
+                                <th><input class="form-control form_datetime" type="text" name="updated_at" condition="elt" placeholder="更新时间" value="{{ old('updated_at') }}"/></th>
+                                <th><button type="button" id="search_btn" class="btn btn-primary m-r-5 m-b-5">查询</button></th>
+                            </tr>
+                        </table>                        
                         <table class="table table-bordered table-hover" id="datatable">
                             <thead>
                                 <tr>

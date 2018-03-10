@@ -32,7 +32,7 @@ class AdminsRepository
              
             ->leftJoin('admins_roles', 'admins_roles.admin_id', '=', 'admins.id')
             ->leftJoin('roles', 'roles.id', '=', 'admins_roles.role_id')
-            ->paginate(15);
+            ->paginate(20);
     }
 
     /**
