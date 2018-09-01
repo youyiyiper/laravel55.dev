@@ -109,7 +109,6 @@ class SearchRepository
      */
     private function getOrderBy($request) 
     {
-        
         if(empty($request['columns']) || empty($request['order'])){
             return false;
         }

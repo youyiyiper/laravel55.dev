@@ -185,6 +185,9 @@ return [
 
         //markdown 编辑器https://laravel-china.org/topics/853/laravel5-markdown-editor-tutorial
         YuanChao\Editor\EndaEditorServiceProvider::class,
+
+        //excel
+        Maatwebsite\Excel\ExcelServiceProvider::class
     ],
 
     /*
@@ -239,6 +242,9 @@ return [
 
         //markdown 编辑器https://laravel-china.org/topics/853/laravel5-markdown-editor-tutorial
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
+
+        //excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

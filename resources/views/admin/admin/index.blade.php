@@ -52,13 +52,15 @@
                                         <td>{{$admin->updated_at}}</td>
                                         <td>
                                             <a href="{{ url('admin/admin',[$admin->id,'edit']) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil"> 编辑</i></button></a>
-
+                                            
+                                            @if(session('adminDetail.id') != $admin->id)
                                             <a href="javascript:;" data-id="{{ $admin->id }}" class="btn btn-danger btn-xs destroy">
                                                 <i class="fa fa-trash"> 删除</i>
                                                 <form action="{{ url('admin/admin',[$admin->id]) }}" method="POST" name="delete_item_{{ $admin->id }}" style="display:none">
                                                 {{ method_field('DELETE') }}{{ csrf_field() }}
                                                 </form>
                                             </a>
+                                            @endif 
                                         </td>
                                     </tr>                                    
                                 @endforeach                                

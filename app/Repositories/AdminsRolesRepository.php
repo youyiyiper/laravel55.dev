@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\AdminsRole;
+use App\Models\AdminsRole;
 
 class AdminsRolesRepository
 {

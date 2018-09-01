@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Category;
-use App\Article;
+use App\Models\Category;
+use App\Models\Article;
 
 class CategorysRepository
 {

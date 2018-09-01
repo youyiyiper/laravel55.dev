@@ -19,6 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//测试
+Route::get('test/upload','TestController@upload');
+Route::post('test/doUpload','TestController@doUpload');
+
+//excel
+Route::get('excel/export','ExcelController@export');
+Route::get('excel/import','ExcelController@import');
 
 //后台
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
@@ -56,14 +63,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
         //用中间件rabc.check 来验证是否有权限操作
         Route::group(['middleware' => 'rabc.check'], function () {
-
             //角色
             Route::resource('role', 'RolesController');
             //权限
             Route::resource('privilege', 'PrivilegesController');
             //菜单
             Route::resource('sidebar', 'SidebarsController');
-           
             //配置
             Route::resource('config', 'ConfigsController');
             //后台用户

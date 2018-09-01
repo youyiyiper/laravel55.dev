@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\ArticlesTag;
+use App\Models\ArticlesTag;
 
 class ArticlesTagsRepository
 {

@@ -50,7 +50,7 @@ class AdminAuthMiddleware
                 session(['adminDetail.'.$key => $value]);
             }
 
-            $role_id = (new \App\AdminsRole)->where('admin_id',$adminDetail['id'])->pluck('role_id')->first();
+            $role_id = (new \App\Models\AdminsRole)->where('admin_id',$adminDetail['id'])->pluck('role_id')->first();
             if ($role_id) {
                 session(['adminDetail.role_id' => $role_id]);
             }else{

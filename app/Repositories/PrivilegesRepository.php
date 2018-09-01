@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Privilege;
+use App\Models\Privilege;
 
 class PrivilegesRepository
 {

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Config;
+use App\Models\Config;
 
 class ConfigsRepository
 {

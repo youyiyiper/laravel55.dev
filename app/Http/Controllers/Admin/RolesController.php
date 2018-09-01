@@ -45,7 +45,7 @@ class RolesController extends Controller
     public function create()
     {
         $privileges = $this->PrivilegesRpt->getOptionPrivileges();
-        $privileges = noLimitCategory($privileges);
+        $privileges = noLimitCategory($privileges); 
         return view('admin.role.create')->with('privileges',$privileges);
     }
 

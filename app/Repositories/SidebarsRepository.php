@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Sidebar;
+use App\Models\Sidebar;
 use App\Repositories\RolesRepository;
 use App\Repositories\PrivilegesRepository;
 

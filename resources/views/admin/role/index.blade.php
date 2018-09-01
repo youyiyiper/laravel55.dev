@@ -51,13 +51,15 @@
                                         <td>{{$role->updated_at}}</td>
                                         <td>
                                             <a href="{{ url('admin/role',[$role->id,'edit']) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-pencil"> 编辑</i></button></a>
-
+                                            
+                                            @if($role->id != 1)
                                             <a href="javascript:;" data-id="{{ $role->id }}" class="btn btn-danger btn-xs destroy">
                                                 <i class="fa fa-trash"> 删除</i>
                                                 <form action="{{ url('admin/role',[$role->id]) }}" method="POST" name="delete_item_{{ $role->id }}" style="display:none">
                                                 {{ method_field('DELETE') }}{{ csrf_field() }}
                                                 </form>
                                             </a>
+                                            @endif 
                                         </td>
                                     </tr>                                    
                                 @endforeach                                
