@@ -80,6 +80,6 @@ class ArticlesRepository
      */
     public function autoPublicedArticles()
     {
-        return $this->updateData(array('published_at <=' => date('Y-m-d H:i:s'),'status' => 0),array('status' => 1));
+        $this->model->where('published_at','<=',date('Y-m-d H:i:s'))->update(array('status' => 1));
     }
 }
