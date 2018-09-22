@@ -104,6 +104,7 @@ return [
     |
     */
 
+    //单个实例使用
     'redis' => [
 
         'client' => 'predis',
@@ -114,7 +115,28 @@ return [
             'port' => env('REDIS_PORT', 6379),
             'database' => 0,
         ],
-
     ],
+
+    /*'redis' => [
+        'client' => 'predis',
+        'clusters' => [
+            'default' => [
+                [
+                    'host' => env('REDIS_HOST', 'localhost'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => 0,
+                ],
+            ],
+            'slave' => [
+                [
+                    'host' => env('REDIS_HOST', 'localhost'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => 0,
+                ],
+            ],            
+        ],
+    ],*/
 
 ];
